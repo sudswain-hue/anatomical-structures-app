@@ -1,0 +1,16 @@
+<div *ngIf="isVisible$ | async" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <ng-container *ngIf="data$ | async as data">
+        <div *ngIf="!data.error">
+          <h2>{{ data.name }}</h2>
+          <p><strong>Description:</strong> {{ data.description }}</p>
+          <p><strong>Ontology Link:</strong> {{ data.ontologyLink }}</p>
+          <p><strong>IRI:</strong> {{ data.iri }}</p>
+        </div>
+        <div *ngIf="data.error">
+          <p>{{ data.error }}</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>  

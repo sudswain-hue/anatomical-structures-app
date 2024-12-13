@@ -1,0 +1,49 @@
+.structure-list {
+    padding: 20px;
+    
+    h2 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+      
+      li {
+        margin-bottom: 10px;
+        
+        a {
+          color: #0066cc;
+          text-decoration: none;
+          cursor: pointer;
+          transition: color 0.3s ease;
+          
+          &:hover {
+            color: #004080;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  
+  .error-message {
+    color: #ff0000;
+    font-style: italic;
+  }
+  
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    
+    &::after {
+      content: "Loading...";
+      font-style: italic;
+      color: #666;
+    }
+  }
+  

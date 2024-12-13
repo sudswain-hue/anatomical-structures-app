@@ -1,0 +1,28 @@
+<div class="structure-list">
+  <h2>Anatomical Structures</h2>
+  <ul *ngIf="structures$ | async as structures">
+    <li *ngFor="let structure of structures | uniqueStructures; trackBy: trackByName">
+      <a (click)="showDetails(structure)">{{ structure.name }}</a>
+    </li>
+  </ul>
+</div>
+
+<div class="modal" *ngIf="isModalVisible">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <ng-container *ngIf="selectedStructure; else loading">
+      <ng-container *ngIf="!selectedStructure.error; else errorTemplate">
+        <h2>{{ selectedStructure.name }}</h2>
+        <p><strong>Description:</strong> {{ selectedStructure.description }}</p>
+        <p><strong>Ontology Link:</strong> {{ selectedStructure.ontologyLink }}</p>
+        <p><strong>IRI:</strong> {{ selectedStructure.iri }}</p>
+      </ng-container>
+      <ng-template #errorTemplate>
+        <p>{{ selectedStructure.error }}</p>
+      </ng-template>
+    </ng-container>
+    <ng-template #loading>
+      <p>Loading structure details...</p>
+    </ng-template>
+  </div>
+</div>
